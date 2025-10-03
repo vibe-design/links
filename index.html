@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>おもち｜プロフィールリンク集</title>
+  <!-- FontAwesome 6.4.0 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* =========================
+       Colors & Layout from reference snippet
+       ========================= */
+    :root{
+      /* Background & text (from reference) */
+      --bg-color: #FBF8F6;
+      --text-strong: #1A1A1A;
+      --text-muted:  #AAAAAA;
+
+      /* Buttons (from reference) */
+      --btn-base:   #EDD9D1;
+      --btn-hover:  #DCC8BC;  /* use the latter hover in the pasted code */
+      --btn-border: #E0CAC0;
+      --btn-hover-border: #CCB5A6;
+      --btn-text:   #2A2A2A;
+
+      /* Shadows (soft, natural) */
+      --shadow-hero:   0 4px 16px rgba(0,0,0,0.15);
+      --shadow-avatar: 0 8px 30px rgba(0,0,0,0.10);
+      --shadow-btn:    0 3px 12px rgba(0,0,0,0.06);
+      --shadow-btn-h:  0 6px 20px rgba(0,0,0,0.10);
+
+      /* Width caps */
+      --hero-max-w: 600px;
+      --main-max-w: 480px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-strong);
+      overflow-x: hidden;
+    }
+
+    .wrap{
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 16px 56px;
+    }
+
+    /* =========================
+       Hero
+       ========================= */
+    .hero{
+      position: relative;
+      width: min(100%, var(--hero-max-w));
+      height: 220px;                /* PC指定 */
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); /* reference gradient fallback */
+      box-shadow: var(--shadow-hero);
+      isolation: isolate;
+    }
+    .hero img.hero-img{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      z-index: 0;
+    }
+
+    /* =========================
+       Profile
+       ========================= */
+    .profile{
+      position: relative;
+      width: min(100%, var(--main-max-w));
+      margin: 0 auto;
+      text-align: center;
+    }
+    .avatar{
+      position: relative;
+      width: 200px; height: 200px;  /* 指定サイズ */
+      border-radius: 999px;
+      margin: -100px auto 18px;     /* ヒーローに上半分が重なる */
+      background: #fff;
+      border: 6px solid var(--bg-color); /* 背景色と同じ太枠 */
+      z-index: 10;                  /* 最前面 */
+      box-shadow: var(--shadow-avatar);
+      overflow: hidden;
+    }
+    .avatar img{
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      border-radius: inherit;
+    }
+
+    .name{
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin: 0 0 8px;
+      color: var(--text-strong); /* #1A1A1A */
+    }
+    .title{
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--text-muted);  /* #AAA */
+      margin: 0 0 45px;
+      font-weight: 400;
+    }
+
+    /* =========================
+       Social Icons (match reference)
+       ========================= */
+    .socials{
+      width: 100%;
+      max-width: 250px;
+      margin: 0 auto 55px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .socials a{
+      color: #333;
+      font-size: 40px;           /* match reference size */
+      text-decoration: none;
+      transition: all .3s ease;
+      opacity: .8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .socials a:hover{
+      opacity: 1;
+      transform: scale(1.15);
+    }
+
+    /* =========================
+       Link Buttons (match reference)
+       ========================= */
+    .links{
+      width: min(100%, var(--main-max-w));
+      margin: 20px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;                  /* spacing per reference */
+      align-items: stretch;
+    }
+    .link-btn{
+      background: var(--btn-base);
+      color: var(--btn-text);
+      padding: 24px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: var(--shadow-btn);
+      border: 1px solid var(--btn-border);
+      transition: all .3s ease;
+      text-align: center;
+      display: block;
+    }
+    .link-btn:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-btn-h);
+      background: var(--btn-hover);
+      border-color: var(--btn-hover-border);
+    }
+
+    /* =========================
+       Responsive (≤768px)
+       ========================= */
+    @media (max-width: 768px){
+      .wrap{ padding: 28px 14px 44px; }
+      .hero{ height: 240px; }       /* 指定 */
+      .avatar{
+        width: 160px; height: 160px;
+        margin: -80px auto 14px;
+      }
+      .name{ font-size: 30px; }
+      .title{ font-size: 10px; letter-spacing: 4px; }
+
+      .socials{ max-width: 220px; }
+      .socials a{ font-size: 34px; } /* match reference mobile size */
+
+      .links{ gap: 16px; }
+      .link-btn{ padding: 22px 30px; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" id="app">
+    <!-- Hero (画像が無い場合はCSSのグラデ背景のまま) -->
+    <section class="hero" id="hero">
+      <img class="hero-img" id="heroImg" src="hero.jpg" alt="Hero background"
+           onerror="this.onerror=null; this.src='hero.png'; this.onerror=function(){ this.style.display='none'; };">
+    </section>
+
+    <!-- Profile -->
+    <section class="profile" aria-label="プロフィール">
+      <div class="avatar">
+        <img id="iconImg" src="icon.jpg" alt="プロフィールアイコン"
+             onerror="this.onerror=null; this.src='icon.png'; this.onerror=function(){ this.style.display='none'; };">
+      </div>
+      <h1 class="name" id="name">おもち</h1>
+      <p class="title" id="role">DESIGNER</p>
+
+      <!-- Socials (only those used) -->
+      <nav class="socials" aria-label="SNSリンク">
+        <!-- Twitter -->
+        <a href="https://x.com/omochibigaku" class="sns twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+        </a>
+        <!-- Instagram -->
+        <a href="https://example.com" class="sns instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
+        <!-- TikTok -->
+        <a href="https://example.com" class="sns tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+        </a>
+      </nav>
+    </section>
+
+    <!-- Links -->
+    <section class="links" aria-label="リンクボタン">
+      <a class="link-btn" href="https://vibedesign.jp/portfolio/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+      <a class="link-btn" href="https://vibedesign.jp/chatgpt" target="_blank" rel="noopener noreferrer">Blog</a>
+      <a class="link-btn" href="https://vibedesign.jp/" target="_blank" rel="noopener noreferrer">Website</a>
+    </section>
+  </main>
+</body>
+</html>
