@@ -55,21 +55,25 @@
     /* =========================
        Hero
        ========================= */
-.hero{
-  position: relative;
-  width: min(100%, var(--hero-max-w));
-  aspect-ratio: 1200 / 400; /* ← CSSで比率を固定 */
-  border-radius: 16px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-  box-shadow: var(--shadow-hero);
-}
-.hero img.hero-img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;  /* または cover に戻すと枠いっぱい */
-}
-
+    .hero{
+      position: relative;
+      width: min(100%, var(--hero-max-w));
+      height: 220px;                /* PC指定 */
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); /* reference gradient fallback */
+      box-shadow: var(--shadow-hero);
+      isolation: isolate;
+    }
+    .hero img.hero-img{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      z-index: 0;
+    }
 
     /* =========================
        Profile
